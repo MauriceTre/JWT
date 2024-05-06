@@ -32,7 +32,13 @@ const UserModel = todoSequelize.define(
       allowNull: true,
     },
   },
-  { tableName: "Users" }
+  {
+    tableName: "Users",
+    defaultScope: { attributes: { exclude: ["password"] } },
+    scopes: {
+      allData: { attributes: { exclude: [] } },
+    },
+  }
 );
 
 module.exports = UserModel;
